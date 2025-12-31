@@ -1,0 +1,983 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>520 app - User Guide</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #5b3b87;
+            --secondary-color: #8ab4f8;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --section-bg: #f5f5f7;
+            --border-color: #e0e0e0;
+            --success-color: #34c759;
+            --warning-color: #ff9500;
+            --error-color: #ff3b30;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 0;
+            margin: 0;
+        }
+        
+        
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #7a4fa8 100%);
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--section-bg);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        section {
+            margin-bottom: 60px;
+            scroll-margin-top: 100px;
+        }
+        
+        section h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        section h3 {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        section h4 {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        article {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        /* Figures */
+        figure {
+            margin: 30px 0;
+            text-align: center;
+            background: var(--section-bg);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        figcaption {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        /* Placeholder for images */
+        .image-placeholder {
+            background: #e0e0e0;
+            border: 2px dashed #999;
+            padding: 60px 20px;
+            border-radius: 8px;
+            color: #666;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        /* Code/Technical */
+        code {
+            background: var(--section-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        /* Alerts */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+        
+        .alert-info {
+            background: #e3f2fd;
+            border-color: var(--secondary-color);
+            color: #1565c0;
+        }
+        
+        .alert-warning {
+            background: #fff3e0;
+            border-color: var(--warning-color);
+            color: #e65100;
+        }
+        
+        .alert-success {
+            background: #e8f5e9;
+            border-color: var(--success-color);
+            color: #2e7d32;
+        }
+        
+        /* Steps */
+        .step {
+            counter-increment: step-counter;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--section-bg);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .step::before {
+            content: "Step " counter(step-counter);
+            display: block;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        ol.steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        /* Device Differences */
+        .device-note {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            background: #fff9e6;
+            border-left: 4px solid var(--warning-color);
+        }
+        
+        .device-note strong {
+            color: var(--warning-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            nav a {
+                display: block;
+                text-align: center;
+            }
+            
+            
+            
+            main {
+                padding: 20px 10px;
+            }
+            
+            article {
+                padding: 20px;
+            }
+        }
+        
+        /* Hidden class for language switching */
+        
+        
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        th {
+            background: var(--section-bg);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        tr:hover {
+            background: var(--section-bg);
+        }
+    
+        /* Images side by side */
+        .image-comparison {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        
+        .image-comparison figure {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        
+        /* iPhone images - reduce 30% */
+        .image-comparison figure:nth-child(1) {
+            flex: 0 0 35%;
+            max-width: 35%;
+        }
+        
+        /* iPad images - increase 30% */
+        .image-comparison figure:nth-child(2) {
+            flex: 0 0 65%;
+            max-width: 65%;
+        }
+        
+        .image-comparison figure img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .image-comparison figcaption {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .image-comparison {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .image-comparison figure {
+                flex: 1 1 100% !important;
+                max-width: 100% !important;
+                width: 100%;
+            }
+            
+            .image-comparison figure img {
+                min-width: 100%;
+            }
+        }
+</style>
+</head>
+<body>
+    <header>
+        <h1>520 app User Guide</h1>
+        <h1>520应用使用指南</h1>
+        <p>Your complete guide to using the 520 app</p>
+        <p>520应用完整使用指南</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#welcome" lang="en">Welcome</a></li>
+            <li><a href="#requirements" lang="en">Requirements</a></li>
+            <li><a href="#first-steps" lang="en">First Steps</a></li>
+            <li><a href="#import" lang="en">Import</a></li>
+            <li><a href="#reading" lang="en">Reading</a></li>
+            <li><a href="#features" lang="en">Features</a></li>
+            <li><a href="#tips" lang="en">Tips</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="welcome">
+            <h2>Welcome</h2>
+<h2>欢迎</h2>
+<article>
+<h3>What is the 520 app?</h3>
+<h3>什么是520应用？</h3>
+<p>The 520 app is a digital library application designed to help you read, study, and organize your publications. The app is <strong>100% offline</strong>, contains <strong>no preloaded information</strong>, and functions as a <strong>reader</strong>. To use it, you must first download the files you want to install from the official website, then import them one by one into the app from their corresponding section. You can import books, magazines, Bibles, and other materials to read them anytime, anywhere on your iPhone or iPad.</p>
+<p>520应用是一款数字图书馆应用，旨在帮助您阅读、学习和整理您的出版物。该应用<strong>100%离线</strong>，<strong>不包含任何预加载信息</strong>，作为<strong>阅读器</strong>运行。要使用它，您必须先从官方网站下载要安装的文件，然后从相应的部分将它们逐一导入到应用中。您可以导入书籍、杂志、圣经和其他材料，随时随地 iPhone 或 iPad 上阅读。</p>
+<h3>What can you do with it?</h3>
+<h3>您可以用它做什么？</h3>
+<ul><li>📖 Read books, magazines, and Bibles</li>
+                    <li>🔍 Search for text across all your publications</li>
+                    <li>✏️ Add notes and highlights to important passages</li>
+                    <li>🎵 Listen to audio versions of the Bible</li>
+                    <li>🎮 Play educational games</li>
+                    <li>📹 Watch videos and music</li>
+                    <li>📚 Organize your personal study materials</li></ul>
+<ul><li>📖 阅读书籍、杂志和圣经</li>
+                    <li>🔍 在所有出版物中搜索文本</li>
+                    <li>✏️ 在重要段落添加笔记和标记</li>
+                    <li>🎵 收听圣经的音频版本</li>
+                    <li>🎮 玩教育游戏</li>
+                    <li>📹 观看视频和音乐</li>
+                    <li>📚 整理您的个人学习材料</li></ul>
+</article>
+        </section>
+        <section id="requirements">
+            <h2>Requirements</h2>
+<h2>要求</h2>
+<article>
+<h3>Device Compatibility</h3>
+<h3>设备兼容性</h3>
+<ul><li><strong>iPhone:</strong> iPhone 8 or newer</li>
+                    <li><strong>iPad:</strong> iPad (5th generation) or newer, iPad Air, iPad Pro, iPad mini</li>
+                    <li><strong>iOS Version:</strong> iOS 16.0 or later</li></ul>
+<ul><li><strong>iPhone:</strong> iPhone 8 或更新型号</li>
+                    <li><strong>iPad:</strong> iPad（第5代）或更新型号、iPad Air、iPad Pro、iPad mini</li>
+                    <li><strong>iOS 版本:</strong> iOS 16.0 或更高版本</li></ul>
+<h3>Supported Publication Types</h3>
+<h3>支持的出版物类型</h3>
+<table>
+                    <thead>
+                        <tr>
+<th>Type</th>
+<th>类型</th>
+<th>Description</th>
+<th>描述</th>
+</tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+<td>NWT</td>
+<td>NWT</td>
+<td>NWT Bible (NWT 圣经)</td>
+<td>新世界译本圣经</td>
+</tr>
+                        <tr>
+<td>NWTSTY</td>
+<td>NWTSTY</td>
+<td>NWT研读版圣经</td>
+<td>新世界译本研读版圣经</td>
+</tr>
+                        <tr>
+<td>W (守杂志)</td>
+<td>守杂志</td>
+<td>W (守杂志)</td>
+<td>守杂志</td>
+</tr>
+                        <tr>
+<td>Booklets</td>
+<td>小册子</td>
+<td>Various booklets</td>
+<td>各种小册子</td>
+</tr>
+                        <tr>
+<td>LFB/LFF</td>
+<td>LFB/LFF</td>
+<td>Books</td>
+<td>书籍</td>
+</tr>
+                        <tr>
+<td>IT</td>
+<td>IT</td>
+<td>Insight</td>
+<td>洞悉</td>
+</tr>
+                        <tr>
+<td>MWB</td>
+<td>MWB</td>
+<td>Meeting Workbook</td>
+<td>聚会手册</td>
+</tr>
+                    </tbody>
+                </table>
+<h3>Supported File Formats</h3>
+<h3>支持的文件格式</h3>
+<ul><li>EPUB and J*PUB</li></ul>
+<ul><li>EPUB 和 J*PUB</li></ul>
+</article>
+        </section>
+        <section id="first-steps">
+            <h2>First Steps</h2>
+<h2>第一步</h2>
+<article>
+<h3>Opening the App for the First Time</h3>
+<h3>首次打开应用</h3>
+<ol class="steps">
+                    <li class="step">
+<p>Import NWT</p>
+<p>导入NWT</p>
+<!-- IMAGEN NECESARIA: App icon on home screen -->
+                        <div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/import_nwt.jpg" alt="Import NWT - iPhone">
+                            <figcaption>Import NWT (iPhone)</figcaption>
+                            <figcaption>导入NWT (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/import_nwt_ipad.jpg" alt="Import NWT - iPad">
+                            <figcaption>Import NWT (iPad)</figcaption>
+                            <figcaption>导入NWT (iPad)</figcaption>
+                        </figure>
+                    </div>
+                    </li>
+                    
+                    <li class="step">
+<p>The app will open to the Bible view.</p>
+<p>应用将打开到圣经视图。</p>
+<!-- IMAGEN NECESARIA: Home screen -->
+                        <div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/bible_view.jpg" alt="Bible view - iPhone">
+                            <figcaption>The Bible view (iPhone)</figcaption>
+                            <figcaption>圣经视图 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/bible_view_ipad.jpg" alt="Bible view - iPad">
+                            <figcaption>The Bible view (iPad)</figcaption>
+                            <figcaption>圣经视图 (iPad)</figcaption>
+                        </figure>
+                    </div>
+                    </li>
+                </ol>
+<h3>Understanding the Main Screen</h3>
+<h3>了解主屏幕</h3>
+<p>The Home screen shows:</p>
+<p>主屏幕显示：</p>
+<ul><li><strong>Daily Text:</strong> Today\'s text from the calendar. <em>Note: You need to import the "es" (daily text) file corresponding to the current year from the official website for the daily text to appear.</em></li>
+                    <li><strong>Favorites:</strong> Your bookmarked publications</li></ul>
+<ul><li><strong>每日经文:</strong> 日历中的今日经文。<em>注意：您需要从官方网站导入当前年份对应的"es"（每日经文）文件，每日经文才会出现。</em></li>
+                    <li><strong>收藏:</strong> 您收藏的出版物</li></ul>
+<h3>Main Navigation Tabs</h3>
+<h3>主导航标签</h3>
+<p>At the bottom of the screen, you'll see the main tabs:</p>
+<p>在屏幕底部，您会看到主要标签：</p>
+<ul><li><strong>🏠 Home:</strong> Daily text and favorites</li>
+<li><strong>📖 Bible:</strong> Read the Bible (NWT/NWTSTY)</li>
+<li><strong>📚 Library:</strong> All your imported publications, Video (With educational games) and Audio</li>
+<li><strong>👥 Meetings:</strong> Meeting materials</li>
+<li><strong>📝 Personal Study:</strong> Your notes and study materials</li></ul>
+<ul><li><strong>🏠 首页:</strong> 每日经文和收藏</li>
+<li><strong>📖 圣经:</strong> 阅读圣经（NWT/NWTSTY）</li>
+<li><strong>📚 图书馆:</strong> 您导入的所有出版物、视频（含教育游戏）和音频</li>
+<li><strong>👥 聚会:</strong> 聚会材料</li>
+<li><strong>📝 个人学习:</strong> 您的笔记和学习材料</li></ul>
+<!-- IMAGEN NECESARIA: Bottom navigation tabs -->
+                <div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/bottom_navigation_tabs.jpg" alt="Bottom navigation tabs - iPhone">
+                            <figcaption>The bottom navigation bar (iPhone)</figcaption>
+                            <figcaption>底部导航栏 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/bottom_navigation_tabs_ipad.jpg" alt="Bottom navigation tabs - iPad">
+                            <figcaption>The bottom navigation bar (iPad)</figcaption>
+                            <figcaption>底部导航栏 (iPad)</figcaption>
+                        </figure>
+                    </div>
+            </article>
+        </section>
+        <section id="import">
+            <h2>Importing Publications</h2>
+<h2>导入出版物</h2>
+<article>
+<h3>Step-by-Step Import Guide</h3>
+<h3>分步导入指南</h3>
+<ol class="steps">
+                    <li class="step">
+<p><strong>Open the Library tab</strong> at the bottom of the screen and select one subsection.</p>
+<p><strong>打开屏幕底部的图书馆标签</strong>并选择一个子部分。</p>
+<!-- IMAGEN NECESARIA: Library tab -->
+                        <div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/library_tab.jpg" alt="Library tab - iPhone">
+                            <figcaption>Tap the Library tab (iPhone)</figcaption>
+                            <figcaption>点击图书馆标签 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/library_tab_ipad.jpg" alt="Library tab - iPad">
+                            <figcaption>Tap the Library tab (iPad)</figcaption>
+                            <figcaption>点击图书馆标签 (iPad)</figcaption>
+                        </figure>
+                    </div>
+                    </li>
+                    
+                    <li class="step">
+<p><strong>Tap the "+" button</strong> or "Import" button.</p>
+<p><strong>点击"+"按钮</strong>或"导入"按钮。</p>
+<!-- IMAGEN NECESARIA: Import button -->
+                        <div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/import_button.jpg" alt="Import button - iPhone">
+                            <figcaption>The Import button (iPhone)</figcaption>
+                            <figcaption>导入按钮 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/import_button_ipad.jpg" alt="Import button - iPad">
+                            <figcaption>The Import button (iPad)</figcaption>
+                            <figcaption>导入按钮 (iPad)</figcaption>
+                        </figure>
+                    </div>
+                    </li>
+                    
+                    <li class="step">
+<p><strong>Select your file</strong> from the file picker.</p>
+<p><strong>从文件选择器中选择您的文件</strong>。</p>
+<!-- IMAGEN NECESARIA: File picker -->
+                        <div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/file_picker.jpg" alt="File picker - iPhone">
+                            <figcaption>Selecting a file to import (iPhone)</figcaption>
+                            <figcaption>选择要导入的文件 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/file_picker_ipad.jpg" alt="File picker - iPad">
+                            <figcaption>Selecting a file to import (iPad)</figcaption>
+                            <figcaption>选择要导入的文件 (iPad)</figcaption>
+                        </figure>
+                    </div>
+                    </li>
+                    
+                    <li class="step">
+<p><strong>Wait for import</strong> to complete. You'll see a progress indicator.</p>
+<p><strong>等待导入</strong>完成。您会看到一个进度指示器。</p>
+<!-- IMAGEN NECESARIA: Import progress -->
+                        <div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/import_progress.jpg" alt="Import progress - iPhone">
+                            <figcaption>Import progress indicator (iPhone)</figcaption>
+                            <figcaption>导入进度指示器 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/import_progress_ipad.jpg" alt="Import progress - iPad">
+                            <figcaption>Import progress indicator (iPad)</figcaption>
+                            <figcaption>导入进度指示器 (iPad)</figcaption>
+                        </figure>
+                    </div>
+                    </li>
+                    
+                    <li class="step">
+<p><strong>Done!</strong> Your publication will appear in the Library.</p>
+<p><strong>完成！</strong>您的出版物将出现在图书馆中。</p>
+<!-- IMAGEN NECESARIA: Imported publication in library -->
+                        <div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/imported_publication.jpg" alt="Imported publication - iPhone">
+                            <figcaption>Publication appears in Library (iPhone)</figcaption>
+                            <figcaption>出版物出现在图书馆中 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/imported_publication_ipad.jpg" alt="Imported publication - iPad">
+                            <figcaption>Publication appears in Library (iPad)</figcaption>
+                            <figcaption>出版物出现在图书馆中 (iPad)</figcaption>
+                        </figure>
+                    </div>
+                    </li>
+                </ol>
+<h3>What to Do If the File Doesn't Appear</h3>
+<h3>如果文件未出现该怎么办</h3>
+<div class="alert alert-warning">
+<p><strong>File not showing?</strong> Try these solutions:</p>
+<p><strong>文件未显示？</strong>尝试以下解决方案：</p>
+<ul><li>Make sure the file is in EPUB or J*PUB format</li>
+                        <li>Check that the file isn't corrupted</li>
+                        <li>Try importing again</li>
+                        <li>Restart the app if needed</li></ul>
+<ul><li>确保文件是 EPUB 或 J*PUB 格式</li>
+                        <li>检查文件是否损坏</li>
+                        <li>尝试重新导入</li>
+                        <li>如需要，重启应用</li></ul>
+</div>
+<h3>Supported File Formats</h3>
+<h3>支持的文件格式</h3>
+<ul><li>EPUB and J*PUB</li></ul>
+<ul><li>EPUB 和 J*PUB</li></ul>
+</article>
+        </section>
+        <section id="reading">
+            <h2>Reading a Publication</h2>
+<h2>阅读出版物</h2>
+<article>
+<h3>Opening Publications from Different Sections</h3>
+<h3>从不同部分打开出版物</h3>
+<h4>From Library Tab:</h4>
+<h4>从图书馆标签：</h4>
+<ol><li>Tap the Library tab</li>
+                    <li>Find your publication in the list</li>
+                    <li>Tap on it to open</li></ol>
+<ol><li>点击图书馆标签</li>
+                    <li>在列表中找到您的出版物</li>
+                    <li>点击打开</li></ol>
+<h4>From Bible Tab:</h4>
+<h4>从圣经标签：</h4>
+<ol><li>Tap the Bible tab</li>
+                    <li>Select NWT or NWTSTY</li>
+                    <li>Choose a book from the grid</li>
+                    <li>Select a chapter</li></ol>
+<ol><li>点击圣经标签</li>
+                    <li>选择 NWT 或 NWTSTY</li>
+                    <li>从网格中选择一本书</li>
+                    <li>选择一个章节</li></ol>
+<h3>Navigating Pages</h3>
+<h3>翻页</h3>
+<ul><li><strong>Swipe left:</strong> Go to next page</li>
+                    <li><strong>Swipe right:</strong> Go to previous page</li>
+                    <li><strong>Tap page edges:</strong> Navigate forward/backward</li></ul>
+<ul><li><strong>向左滑动:</strong> 转到下一页</li>
+                    <li><strong>向右滑动:</strong> 转到上一页</li>
+                    <li><strong>点击页面边缘:</strong> 向前/向后导航</li></ul>
+<div class="device-note">
+<p><strong>iPad:</strong> On iPad, you can use split-screen view to read while taking notes.</p>
+<p><strong>iPad:</strong> 在 iPad 上，您可以使用分屏视图边阅读边做笔记。</p>
+</div>
+<h3>Adjusting Font Size</h3>
+<h3>调整字体大小</h3>
+<ol><li>While reading, tap the right corner icon (aA)</li>
+                    <li>Tap "Font Size" or the font icon</li>
+                    <li>Use the slider to increase or decrease size</li>
+                    <li>Tap outside to close</li></ol>
+<ol><li>阅读时，点击右上角图标（aA）</li>
+                    <li>点击"字体大小"或字体图标</li>
+                    <li>使用滑块增大或减小字体</li>
+                    <li>点击外部关闭</li></ol>
+<!-- IMAGEN NECESARIA: Font size settings -->
+                <div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/font_size_settings.jpg" alt="Font size settings - iPhone">
+                            <figcaption>Adjusting font size (iPhone)</figcaption>
+                            <figcaption>调整字体大小 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/font_size_settings_ipad.jpg" alt="Font size settings - iPad">
+                            <figcaption>Adjusting font size (iPad)</figcaption>
+                            <figcaption>调整字体大小 (iPad)</figcaption>
+                        </figure>
+                    </div>
+
+
+</article>
+        </section>
+        <section id="features">
+            <h2>Additional Features</h2>
+<h2>其他功能</h2>
+<article>
+<h3>Highlights and Notes</h3>
+<h3>标记和笔记</h3>
+<h4>Adding Highlights:</h4>
+<h4>添加标记：</h4>
+<ol><li>Select text by long-pressing</li>
+                    <li>Choose a highlight color</li>
+                    <li>The text will be highlighted</li></ol>
+<ol><li>长按选择文本</li>
+                    <li>选择标记颜色</li>
+                    <li>文本将被标记</li></ol>
+<h4>Adding Notes:</h4>
+<h4>添加笔记：</h4>
+<ol><li>Highlight text and tap on the highlighted text and tap the note icon</li>
+                    <li>Type your note</li>
+                    <li>Save it</li>
+                    <li>Access notes from the Personal Study tab</li></ol>
+<ol><li>标记文本，点击标记的文本，然后点击笔记图标</li>
+                    <li>输入您的笔记</li>
+                    <li>保存</li>
+                    <li>从个人学习标签访问笔记</li></ol>
+<h3>Search Function</h3>
+<h3>搜索功能</h3>
+<ol><li>Tap the search icon (🔍) in the toolbar</li>
+                    <li>Type your search term</li>
+                    <li>Results will show matching publications and pages</li>
+                    <li>Tap a result to go to that location</li></ol>
+<ol><li>点击工具栏中的搜索图标（🔍）</li>
+                    <li>输入您的搜索词</li>
+                    <li>结果将显示匹配的出版物和页面</li>
+                    <li>点击结果转到该位置</li></ol>
+<h3>Bible Study Features</h3>
+<h3>圣经学习功能</h3>
+<p><strong>Important:</strong> To start using the study features for NWT, you must first install the study version NWTSTY and the Research Guide (RSG), both previously downloaded from the official website.</p>
+<p><strong>重要提示：</strong> 要开始使用NWT的学习功能，您必须首先安装研读版NWTSTY和研究指南（RSG），两者都需要从官方网站预先下载。</p>
+<h4>Study Notes (Diamond Icon):</h4>
+<h4>学习笔记（钻石图标）：</h4>
+<ul><li>Tap the diamond (💎) icon in a chapter</li>
+                    <li>View study notes and cross-references</li>
+                    <li>Access research guide articles</li></ul>
+<ul><li>在章节中点击钻石（💎）图标</li>
+                    <li>查看学习笔记和交叉引用</li>
+                    <li>访问研究指南文章</li></ul>
+<h4>Research Guide:</h4>
+<h4>研究指南：</h4>
+<ul><li>In study notes, tap "Research Guide"</li>
+                    <li>Browse articles related to the verse</li>
+                    <li>Tap articles to read full content</li>
+                    <li>Tap Bible references to navigate to verses</li></ul>
+<ul><li>在学习笔记中，点击"研究指南"</li>
+                    <li>浏览与经文相关的文章</li>
+                    <li>点击文章阅读完整内容</li>
+                    <li>点击圣经引用导航到经文</li></ul>
+<h4>Study Material: Diamond vs Verse Number</h4>
+<h4>学习材料：钻石图标与经文编号</h4>
+<p>There are two ways to access study materials in a Bible chapter:</p>
+<p>有两种方式可以访问圣经章节中的学习材料：</p>
+<div style="margin: 20px 0;">
+<h5 style="color: var(--primary-color); margin-top: 15px; margin-bottom: 10px;">1. Diamond Icon (💎) - Chapter View</h5>
+<h5 style="color: var(--primary-color); margin-top: 15px; margin-bottom: 10px;">1. 钻石图标（💎）- 章节视图</h5>
+<ul><li>Tap the diamond (💎) icon in a chapter</li>
+                        <li>Opens the <strong>complete study material view</strong> for the entire chapter</li>
+                        <li>Shows all study references divided verse by verse</li>
+                        <li>You can browse through all verses in the chapter and their study materials</li></ul>
+<ul><li>在章节中点击钻石（💎）图标</li>
+                        <li>打开整个章节的<strong>完整学习材料视图</strong></li>
+                        <li>显示按节划分的所有学习参考资料</li>
+                        <li>您可以浏览章节中的所有经文及其学习材料</li></ul>
+<div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/diamond_chapter_study.jpg" alt="Diamond icon chapter study materials - iPhone">
+                            <figcaption>Diamond icon opens complete chapter study materials (iPhone)</figcaption>
+                            <figcaption>钻石图标打开完整的章节学习材料 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/diamond_chapter_study_ipad.jpg" alt="Diamond icon chapter study materials - iPad">
+                            <figcaption>Diamond icon opens complete chapter study materials (iPad)</figcaption>
+                            <figcaption>钻石图标打开完整的章节学习材料 (iPad)</figcaption>
+                        </figure>
+                    </div>
+</div>
+<div style="margin: 20px 0;">
+<h5 style="color: var(--primary-color); margin-top: 15px; margin-bottom: 10px;">2. Verse Number - Single Verse View</h5>
+<h5 style="color: var(--primary-color); margin-top: 15px; margin-bottom: 10px;">2. 经文编号 - 单节视图</h5>
+<ul><li>Tap the <strong>verse number</strong> (e.g., "1", "2", "3") next to a specific verse</li>
+                        <li>Opens the <strong>study material view for that specific verse only</strong></li>
+                        <li>Shows study references, notes, and research guide articles for just that verse</li>
+                        <li>More focused view for studying a single verse in detail</li></ul>
+<ul><li>点击特定经文旁边的<strong>经文编号</strong>（例如"1"、"2"、"3"）</li>
+                        <li>打开<strong>仅该节的学习材料视图</strong></li>
+                        <li>显示仅该节的学习参考资料、笔记和研究指南文章</li>
+                        <li>更专注的视图，用于详细研究单节经文</li></ul>
+<div class="image-comparison">
+                        <figure>
+                            <img src="IMAGES/verse_number_study.jpg" alt="Verse number single verse study materials - iPhone">
+                            <figcaption>Verse number opens study materials for that specific verse (iPhone)</figcaption>
+                            <figcaption>经文编号打开该特定节的学习材料 (iPhone)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="IMAGES/verse_number_study_ipad.jpg" alt="Verse number single verse study materials - iPad">
+                            <figcaption>Verse number opens study materials for that specific verse (iPad)</figcaption>
+                            <figcaption>经文编号打开该特定节的学习材料 (iPad)</figcaption>
+                        </figure>
+                    </div>
+</div>
+<div class="alert alert-info" style="margin-top: 30px;">
+<p><strong>Key Difference:</strong></p>
+<ul><li><strong>Diamond icon:</strong> Complete chapter view with all verses and their study materials</li>
+                        <li><strong>Verse number:</strong> Focused view for a single verse's study materials</li></ul>
+<p><strong>主要区别：</strong></p>
+<ul><li><strong>钻石图标：</strong> 包含所有经文及其学习材料的完整章节视图</li>
+                        <li><strong>经文编号：</strong> 专注于单节经文学习材料的视图</li></ul>
+</div>
+<div class="device-note">
+<p><strong>iPad:</strong> On iPad, bible references and study notes open in a side panel.</p>
+<p><strong>iPad:</strong> 在 iPad 上，圣经引用和学习笔记在侧边面板中打开。</p>
+</div>
+<h3>Audio Bible</h3>
+<h3>音频圣经</h3>
+<p><strong>Important:</strong> Before using the audio Bible, you must first go to the Library/Audio section and import the MP3 files previously downloaded from the official website corresponding to the NWT books.</p>
+<p><strong>重要提示：</strong> 在使用音频圣经之前，您必须首先转到图书馆/音频部分，导入之前从官方网站下载的与NWT书籍对应的MP3文件。</p>
+<ol><li>Go to the Bible tab</li>
+<li>Select NWT</li>
+<li>Choose a book and chapter</li>
+<li>Tap on a verse, and the audio icon (🎧) will appear over the selected text. Tap it to start playback.</li>
+<li>Play audio while reading</li></ol>
+<ol><li>转到圣经标签</li>
+<li>选择 NWT</li>
+<li>选择一本书和章节</li>
+<li>点击一个经文，音频图标（🎧）将出现在所选文本上方。点击它以开始播放。</li>
+<li>边阅读边播放音频</li></ol>
+<h3>Videos and Music</h3>
+<h3>视频和音乐</h3>
+<h4>Importing Videos:</h4>
+<h4>导入视频：</h4>
+<ol><li>Go to Videos tab</li>
+                    <li>Select a category (Original Songs, Sing With Joy, Children's Songs)</li>
+                    <li>Tap the folder icon to import MP4 files</li>
+                    <li>Select videos from your device</li></ol>
+<ol><li>转到视频标签</li>
+                    <li>选择一个类别（原创歌曲、快乐歌唱、儿童歌曲）</li>
+                    <li>点击文件夹图标导入 MP4 文件</li>
+                    <li>从设备中选择视频</li></ol>
+<h4>Playing Videos:</h4>
+<h4>播放视频：</h4>
+<ul><li>Tap any video thumbnail to play</li>
+                    <li>Use standard video controls</li>
+                    <li>Tap "Random" to play all videos in random order</li></ul>
+<ul><li>点击任何视频缩略图播放</li>
+                    <li>使用标准视频控件</li>
+                    <li>点击"随机"随机播放所有视频</li></ul>
+<h3>Games</h3>
+<h3>游戏</h3>
+<ul><li>Go to Games tab</li>
+                    <li>Select a game</li>
+                    <li>Follow on-screen instructions</li>
+                    <li>View high scores</li></ul>
+<ul><li>转到游戏标签</li>
+                    <li>选择一个游戏</li>
+                    <li>按照屏幕说明操作</li>
+                    <li>查看高分</li></ul>
+
+</article>
+        </section>
+        <section id="tips">
+            <h2>Useful Tips</h2>
+<h2>实用提示</h2>
+<article>
+
+<h3>Common Errors and Solutions</h3>
+<h3>常见错误和解决方案</h3>
+<div class="alert alert-info">
+<p><strong>Publication won't import:</strong></p>
+<p><strong>出版物无法导入：</strong></p>
+<ul>
+                        <li>检查文件格式（必须是 EPUB 或 J*PUB）</li>
+                        <li>确保文件未损坏</li>
+                        <li>尝试重启应用</li>
+                    </ul>
+                </div>
+                
+                <div class="alert alert-info">
+<p><strong>Text too small/large:</strong></p>
+<p><strong>文本太小/太大：</strong></p>
+<ul>
+                        <li>转到设置 → 字体大小</li>
+                        <li>调整滑块</li>
+                        <li>设置会自动保存</li>
+                    </ul>
+                </div>
+                
+                <div class="alert alert-info">
+<p><strong>Can't find a publication:</strong></p>
+<p><strong>找不到出版物：</strong></p>
+<ul>
+                        <li>使用搜索功能</li>
+                        <li>检查图书馆标签</li>
+                        <li>确认已成功导入</li>
+                    </ul>
+                </div>
+<h3>Recommendations for Better Experience</h3>
+<h3>获得更好体验的建议</h3>
+<ul><li><strong>Organize your library:</strong> Import publications in order</li>
+                    
+                    <li><strong>Take notes:</strong> Add notes while reading for better retention</li>
+                    <li><strong>Use dark mode:</strong> Easier on eyes in low light</li>
+                    <li><strong>Keep app updated:</strong> Get latest features and fixes</li></ul>
+<ul><li><strong>整理您的图书馆:</strong> 按顺序导入出版物</li>
+                    
+                    <li><strong>做笔记:</strong> 阅读时添加笔记以提高记忆力</li>
+                    <li><strong>使用深色模式:</strong> 在弱光下更护眼</li>
+                    <li><strong>保持应用更新:</strong> 获得最新功能和修复</li></ul>
+
+            </article>
+        </section>
+    </main>
+
+    
+
+    <script>
+        window.addEventListener('load', function() {
+            var anchors = document.querySelectorAll('a[href^="#"]');
+            for (var i = 0; i < anchors.length; i++) {
+                anchors[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var href = this.getAttribute('href');
+                    var target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
