@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>520 app - User Guide</title>
     <style>
         /* Reset and Base Styles */
@@ -29,6 +29,8 @@
             background-color: var(--bg-color);
             padding: 0;
             margin: 0;
+            /* Asegurar que el contenido no quede oculto por el menú superior en iOS */
+            padding-top: env(safe-area-inset-top, 0);
         }
         
         
@@ -39,6 +41,8 @@
             color: white;
             padding: 60px 20px 40px;
             text-align: center;
+            /* Asegurar que el header respete el safe area en iOS */
+            padding-top: calc(60px + env(safe-area-inset-top, 0));
         }
         
         header h1 {
@@ -59,7 +63,7 @@
             background: var(--section-bg);
             padding: 20px;
             position: sticky;
-            top: 0;
+            top: env(safe-area-inset-top, 0);
             z-index: 100;
             border-bottom: 2px solid var(--border-color);
         }
@@ -249,8 +253,18 @@
         
         /* Responsive */
         @media (max-width: 768px) {
+            header {
+                padding: 40px 20px 30px;
+                padding-top: calc(40px + env(safe-area-inset-top, 0));
+            }
+            
             header h1 {
                 font-size: 2em;
+            }
+            
+            nav {
+                padding: 15px;
+                top: env(safe-area-inset-top, 0);
             }
             
             nav ul {
@@ -261,9 +275,8 @@
             nav a {
                 display: block;
                 text-align: center;
+                padding: 12px 15px;
             }
-            
-            
             
             main {
                 padding: 20px 10px;
@@ -271,6 +284,10 @@
             
             article {
                 padding: 20px;
+            }
+            
+            section {
+                scroll-margin-top: calc(100px + env(safe-area-inset-top, 0));
             }
         }
         
